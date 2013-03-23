@@ -1,0 +1,12 @@
+{application, mikecat,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { mikecat_app, []}},
+  {env, []}
+ ]}.

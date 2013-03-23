@@ -1,0 +1,7 @@
+*~
+deps/*
+ebin/*
+.qc/*
+.eunit/*
+rel/mikecat/*
+dev/*
