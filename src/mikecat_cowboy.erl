@@ -8,11 +8,13 @@ start() ->
     application:start(ranch),
     application:start(cowboy),
     Dispatch = cowboy_router:compile([
-        {'_', [
-			{"/", toppage_handler, []}
-		]}
-	]),
-    {ok, _} = cowboy:start_http(http, 100, [{port, 8080}], [
+      {'_', [
+			  {"/", toppage_handler, []}
+		  ]}
+	  ]),
+    {ok, Data} = yaml:load_file("priv/application.yaml"),
+    [[{_,[{_, Port}]}]] = Data,
+    {ok, _} = cowboy:start_http(http, 100, [{port, Port}], [
 		{env, [{dispatch, Dispatch}]}
 	]),
     ok.

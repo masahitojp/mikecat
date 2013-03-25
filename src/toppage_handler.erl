@@ -11,7 +11,8 @@ init(_Transport, Req, []) ->
 	{ok, Req, undefined}.
 
 handle(Req, State) ->
-	{ok, Req2} = cowboy_req:reply(200, [], <<"Hello Cowboy world!">>, Req),
+	Doc = {[{foo, [<<"bing">>, 2.3, true]}]},
+	{ok, Req2} = cowboy_req:reply(200, [], jiffy:encode(Doc), Req),
 	{ok, Req2, State}.
 
 terminate(_Reason, _Req, _State) ->
